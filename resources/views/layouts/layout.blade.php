@@ -16,10 +16,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Product</a>
+              <a class="nav-link active" aria-current="page" href="/products">Product</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Category</a>
+              <a class="nav-link" href="categories">Category</a>
             </li>
           </ul>
           <form class="d-flex" role="search">
