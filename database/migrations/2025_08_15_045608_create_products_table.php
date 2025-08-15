@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('products', function (Blueprint $table) {
+            $table->id();
+            $table->string(column: 'name');
+            $table->string(column:'description')->nullable();
+            $table->integer(column:'quantity');
+            $table->float(column: 'price');
+            $table->string(column: 'image')->nullable();
+            $table->enum(column: 'status', allowed: ['active','in-active'])->default(value: 'active');
+            $table->foreignId('category_id')->constrained(table: 'categories')->onDelete(action: 'cascade');
+            $table->softDeletes();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('products');
+    }
+};
