@@ -4,7 +4,7 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            Product List
+            <h2>Product List</h2>
         </div>
     </div>
 </div>
