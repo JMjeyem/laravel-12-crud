@@ -11,19 +11,34 @@
                     <thead>
                         <tr>
                         <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Description</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        <th scope="row">3</th>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>@social</td>
-                        </tr>
+                        @if(count($products) > 0)
+                            @foreach($products as $product)
+                                <tr>
+                                    <th scope="row">{{ $loop->iteration }}</th>
+                                    <td>{{ $product->name }}</td>
+                                    <td>{{ $product->category->name }}</td>
+                                    <td>{{ $product->quantity }}</td>
+                                    <td>{{ $product->price }}</td>
+                                    <td>{{ $product->status }}</td>
+                                    <td>{{ $product->description }}</td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="7" class="text-center">No Data Found</td>
+                            </tr>
+                        @endif
                     </tbody>
+
                 </table>
         </div>
     </div>
