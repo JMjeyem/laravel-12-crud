@@ -16,8 +16,7 @@
 
 <div class="mb-3">
     <label class="form-label">Price *</label>
-    <input type="number" name="price" step="0.01" class="form-control"
-        value="{{ old('price', $product->price ?? '') }}">
+    <input type="number" name="price" step="0.01" class="form-control" value="{{ old('price', $product->price ?? '') }}">
     @error('price')
         <span class="text-danger">{{ $message }}</span>
     @enderror
@@ -34,9 +33,12 @@
 <div class="mb-3">
     <label class="form-label">Category</label>
     <select name="category_id" class="form-select">
-        <option value="">{{ $product->category->name ?? 'Choose Category'}}</option>
-        @foreach ($categories as $category)
-            <option value="{{ $category->id }}">{{ $category->name }}</option>
+        <option value="">-- Choose Category --</option>
+        @foreach ($categories ?? [] as $category)
+            <option value="{{ $category->id }}"
+                {{ (old('category_id', $product->category_id ?? '') == $category->id) ? 'selected' : '' }}>
+                {{ $category->name }}
+            </option>
         @endforeach
     </select>
     @error('category_id')
@@ -47,9 +49,8 @@
 <div class="mb-3">
     <label class="form-label">Status *</label>
     <select name="status" class="form-select">
-        <option value="active" {{ (old('status', $product->status ?? '') == 'active') ? 'selected' : '' }}>Active</option>
-        <option value="in-active" {{ (old('status', $product->status ?? '') == 'in-active') ? 'selected' : '' }}>Inactive
-        </option>
+        <option value="active" {{ old('status', $product->status ?? '') == 'active' ? 'selected' : '' }}>Active</option>
+        <option value="in-active" {{ old('status', $product->status ?? '') == 'in-active' ? 'selected' : '' }}>Inactive</option>
     </select>
     @error('status')
         <span class="text-danger">{{ $message }}</span>
@@ -62,6 +63,7 @@
     @error('image')
         <span class="text-danger">{{ $message }}</span>
     @enderror
+
     @if (!empty($product->image))
         <img src="{{ asset('storage/' . $product->image) }}" class="mt-2" width="300">
     @endif
