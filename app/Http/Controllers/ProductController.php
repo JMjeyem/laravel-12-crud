@@ -13,4 +13,7 @@ $products = Product::all();
 return view("product.product-list",data: compact("products"));
 
     }
+    public function create() {
+        return view( "product.create");
+    }
 }
