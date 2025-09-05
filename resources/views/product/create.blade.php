@@ -7,7 +7,8 @@
                Add New Product
             </div>
             <div class="card-body">
-               <form action="" method="post">
+               <form action="{{ route('product.store')}}" method="post" enctype="multipart/form-data">
+                 @csrf 
                  @include( 'product.form')
                </form>
             </div>
