@@ -16,4 +16,12 @@ return view("product.product-list",data: compact("products"));
     public function create() {
         return view( "product.create");
     }
+    public function store(Request $request) {
+        $validated = $request->validate([
+            "name"=> "required|string",
+            "description"=> "nullable|string",
+            "price"=> "required|numeric",
+        ])
+
+    }
 }
