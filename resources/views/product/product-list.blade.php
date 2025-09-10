@@ -25,10 +25,10 @@
             </div>
         </div>
         @if (Session::has( 'success'))
-            <span>{{ Session::get( 'success')}}</span>
+            <div class="alert alert-success  fade show text-center rounded-0 m-0">{{ Session::get( 'success')}}</div>
         @endif
         @if (Session::has( 'error'))
-            <span>{{ Session::get( 'error')}}</span>
+             <div class="alert alert-danger  fade show text-center rounded-0 m-0" role="alert">{{ Session::get( 'error')}}</div>
         @endif
         <div class="card-body">
                 <table class="table table-striped">
