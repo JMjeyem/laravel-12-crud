@@ -33,9 +33,11 @@
 <div class="mb-3">
     <label class="form-label">Category</label>
     <select name="category_id" id="">
-            
+        @foreach ($categories as $category)
+         <option value="{{ $category->id }}">{{ $category->name }}</option>
+        @endforeach
+        
     </select>
-    <input type="text" name="category" class="form-control" value="{{ old( 'category, $product->category-> ?? '') }}
 </div>
 
 <div class="mb-3">
