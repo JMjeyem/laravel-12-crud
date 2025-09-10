@@ -32,12 +32,15 @@
 
 <div class="mb-3">
     <label class="form-label">Category</label>
-    <select name="category_id" id="">
+    <select name="category_id" class="form-select" required>
+        <option value="">Choose Category</option>
         @foreach ($categories as $category)
          <option value="{{ $category->id }}">{{ $category->name }}</option>
         @endforeach
-        
     </select>
+        @error('category_id')
+            <span class="text-danger">{{ $message }}</span>
+        @enderror
 </div>
 
 <div class="mb-3">

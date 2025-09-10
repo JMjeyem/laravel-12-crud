@@ -24,7 +24,15 @@ return view("product.product-list",data: compact("products"));
             "description"=> "nullable|string",
             "price"=> "required|numeric",
             "quantity"=> "required|numeric",
+            "status"=> "required",
+            "category_id"=> "required",
         ]);
+        if($request->hasFile( "image")){
+            $validated["image"] = $request->file( "image")->store( "products", "public");
+        }
+        Product::create( $validated);
+
+        return redirect()->route( "product.index")->with( "success", "product added successful");
 
     }
 }
