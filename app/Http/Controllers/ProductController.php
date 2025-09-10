@@ -26,6 +26,7 @@ return view("product.product-list",data: compact("products"));
             "quantity"=> "required|numeric",
             "status"=> "required",
             "category_id"=> "required",
+            "image"=> "nullable|image|mimes:jpg,png",
         ]);
         if($request->hasFile( "image")){
             $validated["image"] = $request->file( "image")->store( "products", "public");

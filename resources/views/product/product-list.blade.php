@@ -24,6 +24,12 @@
                 </div>
             </div>
         </div>
+        @if (Session::has( 'success'))
+            <span>{{ Session::get( 'success')}}</span>
+        @endif
+        @if (Session::has( 'error'))
+            <span>{{ Session::get( 'error')}}</span>
+        @endif
         <div class="card-body">
                 <table class="table table-striped">
                     <thead>
